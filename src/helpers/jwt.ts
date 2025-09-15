@@ -1,0 +1,14 @@
+// import mongoose from "mongoose";
+// import jwt from "jsonwebtoken";
+
+// import { User } from "../models/models";
+// import { JWT_SECRET } from "../config/variables";
+
+// export function signToken(user: User) {
+//   if (!JWT_SECRET) throw new Error("Missing credentials");
+//   if (!user._id || !mongoose.isValidObjectId(user._id)) throw new Error("Invalid user id");
+
+//   return jwt.sign({ sub: user._id.toString() }, JWT_SECRET, {
+//     expiresIn: "1h",
+//   });
+// }
