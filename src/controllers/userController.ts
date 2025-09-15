@@ -19,7 +19,9 @@ export async function getOneUser(req: Request, res: Response) {
     const user = await User.findById(id);
 
     res.status(200).json(user);
-  } catch (error) {}
+  } catch (error) {
+    res.status(500).json(`Could not get user. Error: ${error}`);
+  }
 }
 
 export async function createUser(req: Request, res: Response) {
@@ -28,8 +30,37 @@ export async function createUser(req: Request, res: Response) {
     password = await bcrypt.hash(password, 10);
     const user = await User.create({ name, email, password });
 
-    return res.status(201).json(user);
+    res.status(201).json(user);
   } catch (error) {
     res.status(500).json(`Could not create user. Error: ${error}`);
+  }
+}
+
+export async function updateUser(req: Request, res: Response) {
+  const { id } = req.params;
+  const { name, password } = req.body;
+
+  try {
+    const input: any = {};
+
+    if (name) input.name = name;
+    if (password) input.password = await bcrypt.hash(password, 10);
+
+    const updatedUser = await User.findByIdAndUpdate(id, input, { new: true });
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.status(500).json(`Could not update user. Error: ${error}`);
+  }
+}
+
+export async function deleteUser(req: Request, res: Response) {
+  const { id } = req.params;
+
+  try {
+    const deletedUser = await User.findByIdAndDelete(id);
+    res.status(200).json(`User with id ${deletedUser?._id} deleted`);
+  } catch (error) {
+    res.status(500).json(`Could not delete user. Error: ${error}`);
   }
 }
