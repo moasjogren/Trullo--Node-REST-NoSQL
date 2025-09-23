@@ -7,15 +7,16 @@ import {
   updateUser,
   deleteUser,
 } from "../controllers/userController";
-import { validateId } from "../middleware/validateId";
+
+import { validateUserId } from "../middleware/validateId";
 import { validateUser, validateUpdatedUser } from "../middleware/validateUser";
 
 const router = express.Router();
 
-router.get("/users/:id", validateId, getOneUser);
+router.get("/users/:id", validateUserId, getOneUser);
 router.get("/users", getUsers);
 router.post("/users", validateUser, createUser);
-router.put("/users/:id", validateId, validateUpdatedUser, updateUser);
-router.delete("/users/:id", validateId, deleteUser);
+router.put("/users/:id", validateUserId, validateUpdatedUser, updateUser);
+router.delete("/users/:id", validateUserId, deleteUser);
 
 export default router;

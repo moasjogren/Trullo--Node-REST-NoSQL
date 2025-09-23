@@ -11,6 +11,11 @@ const userSchema = new Schema(
       trim: true,
     },
     password: { type: String, required: true },
+    role: {
+      type: String,
+      enum: ["ADMIN", "USER"],
+      default: "USER",
+    },
   },
   { timestamps: true, collection: "users" }
 );
@@ -30,11 +35,14 @@ const taskSchema = new Schema(
     assignedTo: {
       type: mongoose.Schema.Types.ObjectId || null,
       ref: "User",
+      default: null,
     },
+    tags: { type: [String], default: [] },
     finishedAt: { type: Date || null },
     finishedBy: {
       type: mongoose.Schema.Types.ObjectId || null,
       ref: "User",
+      default: null,
     },
   },
   { timestamps: true, collection: "tasks" }
