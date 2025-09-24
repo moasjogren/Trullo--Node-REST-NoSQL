@@ -20,7 +20,9 @@ const userSchema = new Schema(
   { timestamps: true, collection: "users" }
 );
 
-export type UserType = InferSchemaType<typeof userSchema>;
+export type UserType = InferSchemaType<typeof userSchema> & {
+  _id: Types.ObjectId;
+};
 export const User = mongoose.model("User", userSchema);
 
 const taskSchema = new Schema(
@@ -42,7 +44,6 @@ const taskSchema = new Schema(
     finishedBy: {
       type: mongoose.Schema.Types.ObjectId || null,
       ref: "User",
-      default: null,
     },
   },
   { timestamps: true, collection: "tasks" }

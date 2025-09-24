@@ -39,9 +39,12 @@ export async function createTask(req: Request, res: Response) {
 export async function updateTask(req: Request, res: Response) {
   const { id } = req.params;
   const { title, description, status, assignedTo, tags } = req.body;
-  const input = { title, description, status, assignedTo, tags };
+  const input: any = { title, description, status, assignedTo, tags };
 
   try {
+    if (status === "DONE") {
+      input.finishedAt = Date.now();
+    }
     const updatedTask = await Task.findByIdAndUpdate(id, input, { new: true });
 
     res.status(200).json(updatedTask);
