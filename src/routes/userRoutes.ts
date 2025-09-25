@@ -1,17 +1,18 @@
 import express from "express";
-
 import {
   getOneUser,
   getUsers,
   createUser,
   updateUser,
   deleteUser,
+  signInUser,
 } from "../controllers/userController";
-
 import { validateUserId } from "../middleware/validateId";
 import { validateUser, validateUpdatedUser } from "../middleware/validateUser";
 
 const router = express.Router();
+
+router.post("/users/signin", signInUser);
 
 router.get("/users/:id", validateUserId, getOneUser);
 router.get("/users", getUsers);

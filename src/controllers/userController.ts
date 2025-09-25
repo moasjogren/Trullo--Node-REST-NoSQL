@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-
 import { User } from "../models/models";
 
 export async function getUsers(_req: Request, res: Response) {
@@ -60,5 +59,27 @@ export async function deleteUser(req: Request, res: Response) {
     res.status(200).json(`User with id ${deletedUser?._id} deleted`);
   } catch (error) {
     res.status(500).json(`Could not delete user. Error: ${error}`);
+  }
+}
+
+// TODO: Skapa token + kolla token vid t.ex getOneUser, updateUser
+export async function signInUser(req: Request, res: Response) {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email: email });
+
+    if (!user) {
+      res.status(404).json({ message: "User not found" });
+      return;
+    }
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+      res.status(401).json({ message: "Invalid password" });
+      return;
+    }
+    res.status(200).json("Success!");
+  } catch (error) {
+    res.status(500).json(`Could not sign in user. Error: ${error}`);
   }
 }
