@@ -16,7 +16,7 @@ const router = express.Router();
 router.get("/users/:id", validateUserId, getOneUser);
 router.get("/users", getUsers);
 router.post("/users", validateUser, createUser);
-router.put("/users/:id", validateUserId, validateUpdatedUser, updateUser);
+router.patch("/users/:id", validateUserId, validateUpdatedUser, updateUser);
 router.delete("/users/:id", validateUserId, deleteUser);
 
 export default router;

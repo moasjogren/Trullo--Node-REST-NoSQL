@@ -42,3 +42,12 @@
   "__v": 0
 }
 ```
+
+### Teoretiska resonemang:
+
+**Motivera ditt val av databas:**\
+Text\
+**Redogör vad de olika teknikerna (ex. verktyg, npm-paket, etc.) gör i applikationen:**\
+Text\
+**Redogör översiktligt hur applikationen fungerar:**\
+Text

@@ -52,3 +52,14 @@ export async function updateTask(req: Request, res: Response) {
     res.status(500).json(`Could not update task. Error: ${error}`);
   }
 }
+
+export async function deleteTask(req: Request, res: Response) {
+  const { id } = req.params;
+
+  try {
+    const deletedTask = await Task.findByIdAndDelete(id);
+    res.status(200).json(deletedTask);
+  } catch (error) {
+    res.status(500).json(`Could not delete task. Error: ${error}`);
+  }
+}
