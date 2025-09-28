@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
+import { token } from "../middleware/auth";
 import { User } from "../models/models";
 
 export async function getUsers(_req: Request, res: Response) {
@@ -78,7 +79,8 @@ export async function signInUser(req: Request, res: Response) {
       res.status(401).json({ message: "Invalid password" });
       return;
     }
-    res.status(200).json("Success!");
+    const userToken = token(user);
+    res.status(200).json({ "Success!": userToken });
   } catch (error) {
     res.status(500).json(`Could not sign in user. Error: ${error}`);
   }
