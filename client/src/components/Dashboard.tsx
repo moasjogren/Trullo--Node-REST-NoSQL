@@ -8,7 +8,7 @@ const DB_URL = import.meta.env.VITE_DB_URL;
 
 export default function Dashboard() {
   const [tasks, setTasks] = useState<any[]>([]);
-  const [users, setUsers] = useState<any[]>([]);
+  // const [users, setUsers] = useState<any[]>([]);
 
   const fetchAPI = async (endpoint: string) => {
     try {
@@ -31,10 +31,10 @@ export default function Dashboard() {
   useEffect(() => {
     const loadData = async () => {
       const tasksData = await fetchAPI("tasks");
-      const usersData = await fetchAPI("users");
+      // const usersData = await fetchAPI("users");
 
       setTasks(tasksData);
-      setUsers(usersData);
+      // setUsers(usersData);
     };
     loadData();
   }, []);
@@ -46,7 +46,12 @@ export default function Dashboard() {
         <div className="taskBoard">
           {["TO_DO", "IN_PROGRESS", "BLOCKED", "DONE"].map((status, index) => (
             <div key={index} className="taskColumn">
-              <h3>{status}</h3>
+              <h3>
+                {status
+                  .replace(/_/g, " ")
+                  .toLowerCase()
+                  .replace(/\b\w/g, (l) => l.toUpperCase())}
+              </h3>
               {tasks.filter((task) => task.status === status).length > 0 ? (
                 tasks
                   .filter((task) => task.status === status)

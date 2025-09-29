@@ -21,8 +21,18 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     <div className="taskCard">
       <h3>{task.title}</h3>
       <p>{task.description}</p>
+
+      <div className="taskCardTags">
+        <span>Tags:</span>
+        {task.tags.map((tag) => (
+          <p>{tag}</p>
+        ))}
+      </div>
       <p className={`status status-${task.status.toLowerCase()}`}>
-        {task.status}
+        {task.status
+          .replace(/_/g, " ")
+          .toLowerCase()
+          .replace(/\b\w/g, (l) => l.toUpperCase())}
       </p>
     </div>
   );

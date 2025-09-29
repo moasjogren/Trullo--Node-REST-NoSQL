@@ -51,8 +51,27 @@ Jag har valt MongoDB, med Mongoose som ODM. Jag har i princip enbart jobbat med 
 
 ### Redogör vad de olika teknikerna (ex. verktyg, npm-paket, etc.) gör i applikationen:
 
-Text
+`express` Ramverk för Node, används bland annat för requests och middleware. \
+`mongoose` ODM för enkel databashantering. \
+`dotenv` Paket för konfiguration av .env-filer. \
+`express-validator` Paket för datavalidering vid requests. \
+`jsonwebtoken` Används för att skapa en token vid lyckad inloggning. \
+`bcrypt` Används för att kunna hasha t.ex lösenord för säkrare hantering i databas. \
+`cors` Används för att låta frontend/client skicka requests till backend/server.
 
 ### Redogör översiktligt hur applikationen fungerar:
 
-Text
+Appen kan göra requests till databasen (MongoDB). Databasen innehåller två collections: Tasks och Users. CRUD-funktioner finns för både Tasks och Users.\
+Utöver det finns bland annat dessa funktioner:
+
+- En User kan tilldelas en Task, `assignedTo`.
+- När en Tasks status ändras till DONE uppdateras fältet `finishedAt`.
+- En User kan antingen vara USER eller ADMIN. Endast admin kan radera andra användare, detta valideras via [middleware](src/middleware/isAdmin.ts).
+- Validering för Task-id och User-id, skapandet av ny User eller Task sker som middleware med express-validator.
+- Det finns även en enkel [frontend](/client/src/App.tsx) (React, Vite) för visualisering av Tasks. För tillfället innehåller den ingen övrig funktionalitet. För att testa:
+
+`touch .env.local` :
+
+```
+VITE_DB_URL=http://localhost:3000/api
+```

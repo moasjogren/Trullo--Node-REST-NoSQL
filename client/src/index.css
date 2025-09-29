@@ -1,13 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 :root {
-  font-family: Open Sans, Helvetica, Arial, sans-serif;
+  font-family: Open Sans, sans-serif;
   line-height: 1.5;
   font-weight: 500;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #121212;
+  color: #121212;
+  background-color: #f4e9d7;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,17 +22,4 @@
 
 ul {
   list-style: none;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
