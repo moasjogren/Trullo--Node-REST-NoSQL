@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-
+import { token } from "../middleware/auth";
 import { User } from "../models/models";
 
 export async function getUsers(_req: Request, res: Response) {
@@ -60,5 +60,27 @@ export async function deleteUser(req: Request, res: Response) {
     res.status(200).json(`User with id ${deletedUser?._id} deleted`);
   } catch (error) {
     res.status(500).json(`Could not delete user. Error: ${error}`);
+  }
+}
+
+export async function signInUser(req: Request, res: Response) {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email: email });
+
+    if (!user) {
+      return res.status(404).json("User not found");
+    }
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json("Invalid password");
+    }
+    const userToken = token(user);
+    res
+      .status(200)
+      .json({ message: `Signed in as ${user.name}`, token: userToken });
+  } catch (error) {
+    res.status(500).json(`Could not sign in user. Error: ${error}`);
   }
 }

@@ -41,10 +41,6 @@ const taskSchema = new Schema(
     },
     tags: { type: [String], default: [] },
     finishedAt: { type: Date || null },
-    finishedBy: {
-      type: mongoose.Schema.Types.ObjectId || null,
-      ref: "User",
-    },
   },
   { timestamps: true, collection: "tasks" }
 );

@@ -1,0 +1,83 @@
+.dashboard {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+
+header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px 0 12px;
+  margin: 0px 0 12px 0;
+}
+
+header > h1 {
+  font-size: 16px;
+}
+
+.taskBoard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  padding: 4px 16px 4px 16px;
+}
+
+.taskColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 4px;
+  padding: 4px 8px 4px 8px;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.taskCard {
+  height: fit-content;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+
+.status {
+  width: fit-content;
+  padding: 0 8px 0 8px;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 4px;
+  text-align: center;
+  color: white;
+}
+.status-to_do {
+  background-color: #6c757d;
+}
+.status-in_progress {
+  background-color: #007bff;
+}
+.status-done {
+  background-color: #28a745;
+}
+.status-blocked {
+  background-color: #dc3545;
+}
+
+.taskCardTags {
+  display: flex;
+  gap: 4px;
+  overflow: scroll;
+}
+.taskCardTags > span {
+  font-weight: bold;
+}
