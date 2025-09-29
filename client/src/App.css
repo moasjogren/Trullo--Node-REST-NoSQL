@@ -1,6 +1,65 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.dashboard {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px 0 12px;
+  margin: 12px 0 12px 0;
+}
+
+header > h1 {
+  font-size: 16px;
+  color: red;
+}
+
+.taskBoard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.taskColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 4px;
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.taskCard {
+  height: fit-content;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.status {
+  width: fit-content;
+  padding: 0 2px 0 2px;
+  font-weight: bold;
+  color: white;
+}
+.status-to_do {
+  background-color: #6c757d;
+}
+.status-in_progress {
+  background-color: #007bff;
+}
+.status-done {
+  background-color: #28a745;
+}
+.status-blocked {
+  background-color: #dc3545;
 }

@@ -1,6 +1,6 @@
 # Examinationsuppgift - Trullo - Moa Sjögren
 
-### Körguide:
+## Körguide:
 
 1. `npm install`
 2. `touch .env`
@@ -43,11 +43,16 @@
 }
 ```
 
-### Teoretiska resonemang:
+## Teoretiska resonemang:
 
-**Motivera ditt val av databas:**\
-Text\
-**Redogör vad de olika teknikerna (ex. verktyg, npm-paket, etc.) gör i applikationen:**\
-Text\
-**Redogör översiktligt hur applikationen fungerar:**\
+### Motivera ditt val av databas:
+
+Jag har valt MongoDB, med Mongoose som ODM. Jag har i princip enbart jobbat med SQL-databaser tidigare, därför valde jag en NoSQL-databas den här gången. Dels för att öva och lära mig mer om NoSQL, dels för att jag upplever att setup och testning går snabbare och smidigare jämfört med SQL-databaser.
+
+### Redogör vad de olika teknikerna (ex. verktyg, npm-paket, etc.) gör i applikationen:
+
+Text
+
+### Redogör översiktligt hur applikationen fungerar:
+
 Text

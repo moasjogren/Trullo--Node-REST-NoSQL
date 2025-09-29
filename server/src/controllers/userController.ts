@@ -63,24 +63,23 @@ export async function deleteUser(req: Request, res: Response) {
   }
 }
 
-// TODO: Skapa token + kolla token vid t.ex getOneUser, updateUser
 export async function signInUser(req: Request, res: Response) {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email: email });
 
     if (!user) {
-      res.status(404).json({ message: "User not found" });
-      return;
+      return res.status(404).json("User not found");
     }
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
-      res.status(401).json({ message: "Invalid password" });
-      return;
+      return res.status(401).json("Invalid password");
     }
     const userToken = token(user);
-    res.status(200).json({ "Success!": userToken });
+    res
+      .status(200)
+      .json({ message: `Signed in as ${user.name}`, token: userToken });
   } catch (error) {
     res.status(500).json(`Could not sign in user. Error: ${error}`);
   }
