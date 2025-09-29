@@ -8,6 +8,7 @@
    `MONGODB_URI="<uri>"`\
    `PORT=<t.ex 3000>`\
    Dessa, plus en env-config-variabel som tystar dotenvs tips och tricks-meddelanden finns även i [.env.example.](.env.example)
+
 4. `npm run seed` [seed-fil](/server/src/config/seed.ts)
 5. `npm run dev`
 6. Testa med exempelvis [Yaak](https://yaak.app/) eller Thunderclient.
