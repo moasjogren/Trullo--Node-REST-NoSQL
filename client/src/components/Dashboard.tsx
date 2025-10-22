@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import { TaskCard } from "./TaskCard";
 import Header from "./Header";
+import CreateTaskContainer from "./createTask";
+import { TaskCard } from "./TaskCard";
 
 const DB_URL = import.meta.env.VITE_DB_URL;
 
@@ -18,8 +19,6 @@ export default function Dashboard() {
         console.log("Error");
         return;
       }
-
-      console.log(response.data);
 
       return response.data;
     } catch (error) {
@@ -43,6 +42,7 @@ export default function Dashboard() {
     <div className="dashboard">
       <Header />
       <div className="mainContent">
+        <CreateTaskContainer />
         <div className="taskBoard">
           {["TO_DO", "IN_PROGRESS", "BLOCKED", "DONE"].map((status, index) => (
             <div key={index} className="taskColumn">
