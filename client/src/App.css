@@ -23,6 +23,19 @@ header > h1 {
   font-size: 16px;
 }
 
+.createTaskContainer {
+  background-color: lightcyan;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.createTaskForm {
+  background-color: red;
+  display: flex;
+  gap: 10px;
+}
+
 .taskBoard {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -31,6 +44,7 @@ header > h1 {
 }
 
 .taskColumn {
+  height: fit-content;
   display: flex;
   flex-direction: column;
   gap: 16px;
