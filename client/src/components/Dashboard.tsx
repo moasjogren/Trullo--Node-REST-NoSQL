@@ -14,7 +14,7 @@ export default function Dashboard() {
   const fetchAPI = async (endpoint: string) => {
     try {
       const response = await axios.get(`${DB_URL}/${endpoint}`);
-
+      console.log(response);
       return Array.isArray(response.data) ? response.data : [];
     } catch (error) {
       console.error("Failed to fetch.", error);
