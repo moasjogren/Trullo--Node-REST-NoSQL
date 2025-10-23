@@ -23,7 +23,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     const loadData = async () => {
-      const tasksData = await fetchAPI("api/tasks");
+      const tasksData = await fetchAPI("tasks");
       // const usersData = await fetchAPI("users");
       console.log("tasks" + tasksData);
       setTasks(tasksData);
