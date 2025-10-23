@@ -32,7 +32,7 @@ export default function CreateTaskContainer() {
 
   return (
     <div className="createTaskContainer">
-      <p>Create new task</p>
+      <h3>Create new task</h3>
       <form className="createTaskForm" onSubmit={handleSubmit(onSubmit)}>
         <input
           placeholder="Title"
